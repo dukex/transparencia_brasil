@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = TransparenciaBrasil::VERSION
   spec.authors       = ["Duke"]
   spec.email         = ["srdukex@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Gem to get data from transparenciabrasil.org API}
+  spec.summary       = %q{Gem to get data from transparenciabrasil.org API}
+  spec.homepage      = "http://github.com/dukex/transparencia_brasil"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
