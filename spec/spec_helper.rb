@@ -23,13 +23,17 @@ RSpec.configure do |config|
   config.order = 'random'
 end
 
+TransparenciaBrasil.configure do |c|
+  c.token = "aaa"
+end
+
 [:get, :post, :delete, :put].each do |operation|
   Kernel.send(:define_method, "a_#{operation}") do |path|
     a_request(operation, TransparenciaBrasil.configuration.endpoint + path)
   end
 
   Kernel.send(:define_method, "stub_#{operation}") do |path|
-    stub_request(operation, TransparenciaBrasil.configuration.endpoint + path)
+    stub_request(operation, TransparenciaBrasil.configuration.endpoint + path).with(headers: {"App-Token" => TransparenciaBrasil.configuration.token})
   end
 end
 

@@ -9,6 +9,10 @@ module TransparenciaBrasil
         Addressable::URI.parse(TransparenciaBrasil.configuration.endpoint)
       end
 
+      def token
+        TransparenciaBrasil.configuration.token
+      end
+
       def get_entity(klass, path, params = {})
         objects_from_response(klass, request(:get, path, params))
       end
@@ -44,6 +48,7 @@ module TransparenciaBrasil
       def connection_builder(method, url, params)
         request_setup = Proc.new { |config|
           config.verbose = ENV['DEBUG']
+          config.headers['App-Token'] = token
           config.ssl_verify_peer = false
         }
 
