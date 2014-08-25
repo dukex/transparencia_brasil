@@ -18,11 +18,9 @@ describe TransparenciaBrasil::Excelencia do
       expect(a_get("/v1/excelencias?casa=2")).to have_been_made
     end
 
-
     it 'returns a TransparenciaBrasil::Identity::Excelencia' do
       expect(TransparenciaBrasil::Excelencia.all(TransparenciaBrasil::Excelencia::CAMARAFEDERAL).first).
         to be_kind_of(TransparenciaBrasil::Identity::Excelencia)
     end
   end
-
 end
