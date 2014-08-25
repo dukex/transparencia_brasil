@@ -23,4 +23,20 @@ describe TransparenciaBrasil::Excelencia do
         to be_kind_of(TransparenciaBrasil::Identity::Excelencia)
     end
   end
+
+  describe '.get' do
+    before do
+      stub_get("/v1/excelencias/1").to_return(body: fixture('excelencia.json'))
+    end
+
+   it 'call API ' do
+      TransparenciaBrasil::Excelencia.get(1)
+      expect(a_get("/v1/excelencias/1")).to have_been_made
+    end
+
+    it 'returns a TransparenciaBrasil::Identity::Excelencia' do
+      expect(TransparenciaBrasil::Excelencia.get(1)).
+        to be_kind_of(TransparenciaBrasil::Identity::Excelencia)
+    end
+  end
 end

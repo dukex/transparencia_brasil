@@ -8,5 +8,9 @@ module TransparenciaBrasil
       params[:casa] = casa
       get_entity(TransparenciaBrasil::Identity::Excelencia, 'v1/excelencias', params)
     end
+
+    def self.get(id)
+      get_entity(TransparenciaBrasil::Identity::Excelencia, "v1/excelencias/#{id}")
+    end
   end
 end
