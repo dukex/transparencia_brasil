@@ -8,7 +8,7 @@ module TransparenciaBrasil
         mod = Module.new do
           attrs.each do |attribute|
             define_method attribute do
-              @attrs[attribute.to_s]
+              @attrs[attribute.to_sym]
             end
           end
         end
@@ -19,6 +19,7 @@ module TransparenciaBrasil
       #
       # @param attrs [Hash]
       def initialize(attrs={})
+        attrs = attrs.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
         @attrs = attrs
       end
     end
