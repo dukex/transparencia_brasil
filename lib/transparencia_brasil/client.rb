@@ -42,7 +42,10 @@ module TransparenciaBrasil
       end
 
       def connection_builder(method, url, params)
-        request_setup = Proc.new { |config| config.verbose = ENV['DEBUG'] }
+        request_setup = Proc.new { |config|
+          config.verbose = ENV['DEBUG']
+          config.ssl_verify_peer = false
+        }
 
         connection = case method
                      when :get
